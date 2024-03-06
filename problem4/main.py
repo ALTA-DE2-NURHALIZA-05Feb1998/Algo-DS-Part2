@@ -1,5 +1,12 @@
 def count_item_and_sort(items):
-    result = ""
+    kemunculan_barang = {}
+    for barang in items:
+        if barang in kemunculan_barang:
+            kemunculan_barang[barang] += 1
+        else:
+            kemunculan_barang[barang] = 1
+    barang_urut = sorted(kemunculan_barang.items(), key=lambda x: (x[1], x[0]))
+    result = " ".join([f"{barang}->{jumlah}" for barang, jumlah in barang_urut])
     return result
 
 if __name__ == "__main__":
